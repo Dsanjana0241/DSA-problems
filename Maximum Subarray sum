@@ -1,0 +1,34 @@
+#Maximum Subarray Sum
+
+nums=list(map(int,input().split()))
+n=len(nums)
+
+#Brute Force Solution
+
+maxi=float("-inf")
+for i in range(0,n):
+   total=0
+   for j in range(i,n):
+       total=total+nums[j]
+       maxi=max(total,maxi)
+return maxi
+
+Time complexity=O(N(N+1)/2)~=O(N**2)
+Space complexity=O(1)
+
+Where N is the number of elements in the array
+
+#Optimal Solution --Kadane Algorithm
+
+total=0
+maxi=float("-inf")
+for i in range(0,n):
+    total=total+nums[i]
+    maxi=max(total,maxi)
+    if total<0:
+        total=0
+return maxi
+
+Time Complexity=O(N)
+Space complexity=O(1)
+
