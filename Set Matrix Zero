@@ -1,0 +1,54 @@
+#Set Matrix Zero(whenver O is their in matrix make that all elements in that row and colum zero):Leetcode-73
+rows=int(input("Enter Number of rows:"))
+cols=int(input("Enter Number of columns:"))
+matrix=[list(map(int,input().split())) for _ in range(rows)]
+
+#Brute Force Solution
+
+def mark_infinity(matrix,row,col):
+   r=len(matrix)
+   c=len(matrix[0])
+   for i in range(0,r):
+      if matrix[i][col]!=0:
+         matrix[i][col]=float("inf")
+   for j in range(0,c):
+      if matrix[row][j]!=0:
+          matrix[row][j]=float("inf")
+
+def setzeros(matrix):
+     r=len(matrix)
+     c=len(matrix[0])
+     for i in range(0,r):
+        for j in range(0,c):
+            if matrix[i][j]==0:
+                mark_infinity(matrix,i,j)
+     for i in range(0,r):
+         for j in range(0,c):
+             if matrix[i][j==float("inf"):
+                 matrix[i][j]=0
+
+Time Complexity=O(((N+M)*(N*M))+O(N*M)
+Space Complexity=O(1)
+
+#optimal Solution
+
+def setzeros(matrix):
+    r=len(matrix)
+    c=len(matrix[0])
+    rowtrack=[0 for _ in range(r)]
+    coltrack=[0 for _ in range(c)]
+    for i in range(0,r):
+      for j i range(0,c):
+         if matrix[i][j]==0:
+             rowtrack[i]=-1
+             coltrack[i]=-1
+    for i in range(0,r):
+      for j in range(0,c):
+         if rowtrack[i]==-1 or coltrack[j]==-1:
+             matrix[i][j]=0
+
+Time Complexity=O(2(N*M))~=O(N*M)
+Space Complexity=O(1)
+
+where N is the Number of rows in the matrix
+      M is the NUmber of columns in the matrix
