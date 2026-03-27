@@ -1,0 +1,26 @@
+#Rotate by 90 degree(Leetcode-48)
+rows=int(input("Enter Number of rows:"))
+cols=int(input("Enter number of columns:"))
+matrix=[list(map(int,input().split())) for _ in range(rows)]
+
+#Brute Force Solution
+n=len(matrix)
+result=[[0 for _ in range(n)] for _ in range(n)]
+for i in range(0,n):
+  for j in range(0,n):
+      result[j][(n-1)-i]=matrix[i][j]
+return result
+Time Compexity=O(N**2)
+Space Complexity=O(N**2)
+
+#Optimal Solution
+n=len(matrix)
+for i in range(0,n-1):
+    for j in range(i+1,n):
+         matrix[i][j],matrix[j][i]=matrix[j][i],matrix[i][j]
+for i in range(0,n):
+        matrix[i].reverse()
+
+Time Complexity=O(N**2)
+Space Complexity=O(1)
+        
