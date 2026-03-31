@@ -1,0 +1,34 @@
+#Binary Search(Leetcode-704)
+
+#Iterative Solution
+
+def binarysearch(nums,target):
+    low=0
+    high=len(nums)-1
+    while low<=high:
+       mid=(low+high)//2
+       if nums[mid]==target:
+                return mid
+       elif nums[mid]>target:
+            low=mid+1
+       else:
+          high=mid-1
+    return -1
+
+#Recursive Solution
+
+def binarysearch(nums,low,high):
+    if low>high:
+       return -1
+    mid=(low+high)//2
+    if nums[mid]==target:
+         return mid
+    elif nums[mid]<target:
+         return binarysearch(nums,mid+1,high)
+    else:
+        return binarysearch(nums,low,high-1)
+
+Time Complexity=log2(N)
+Space Complexity=O(1)
+
+Where N is the Number of Elements in the List
