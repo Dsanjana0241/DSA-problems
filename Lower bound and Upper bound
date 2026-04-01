@@ -1,0 +1,35 @@
+nums=list(map(int,input().split()))
+target=int(input())
+
+#Lower Bound(Smallest index such that nums[i]>=target)
+
+n=len(nums)
+lb=-1
+low=0
+high=n-1
+while low<=high:
+  mid=(low+high)//2
+  if nums[mid]>=target:
+      lb=mid
+      high=mid-1
+   else:
+      low=mid+1
+return lb
+
+#Upper Bound(Smallest index such that nums[i]>target)
+
+n=len(nums)
+ub=n
+low=0
+high=n-1
+while low<=high:
+  mid=(low+high)//2
+  if nums[mid>=target:
+    ub=mid
+    high=mid-1
+  else:
+    low=mid+1
+return ub
+
+Time Complexity=O(log2(N))
+Space Complexity=O(1)
