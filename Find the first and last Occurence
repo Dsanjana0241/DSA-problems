@@ -1,0 +1,61 @@
+#Find The First and last Occurence(Leetcode-34)
+
+#Brute Force Solution
+
+class Solution:
+   def searchRange(self, nums: List[int], target: int) -> List[int]:
+      first=-1
+      last=-1
+      n=len(nums)
+      for i in range(0,n):
+          if nums[i]==target:
+             if first==-1:
+                 first=i
+             last=i
+      return [first,last]
+
+#Time Complexity=O(N)
+#Space Complexity=O(1)
+
+#Optimal Solution
+
+class Solution:
+    def lowerbound(self, nums, target):
+        n = len(nums)
+        lb = n   
+        low = 0
+        high = n - 1
+        while low <= high:
+            mid = (low + high) // 2
+            if nums[mid] >= target:
+                lb = mid
+                high = mid - 1
+            else:
+                low = mid + 1
+        return lb
+
+    def upperbound(self, nums, target):
+        n = len(nums)
+        ub = n   
+        low = 0
+        high = n - 1
+        while low <= high:
+            mid = (low + high) // 2
+            if nums[mid] > target:
+                ub = mid
+                high = mid - 1
+            else:
+                low = mid + 1
+        return ub
+
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        lower = self.lowerbound(nums, target)
+
+        if lower == len(nums) or nums[lower] != target:
+            return [-1, -1]
+
+        upper = self.upperbound(nums, target)
+        return [lower, upper - 1]
+
+#Time Complexity=O(2 log2(N))
+#Space complexity=O(1)
