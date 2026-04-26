@@ -1,0 +1,32 @@
+#Find The middle of the Linked List-SLL(Leetcode-876)
+
+#Brute Force Solution
+
+class Solution:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        temp=head
+        n=0
+        while temp is not None:
+            n+=1
+            temp=temp.next
+        temp=head
+        for i in range(0,n//2):
+            temp=temp.next
+        return temp
+
+#Time Complexity=O(N+N/2)
+#Space Complexity=O(1)
+
+#Optimal solution
+
+class Solution:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+         slow=self.head
+         fast=self.head
+         while fast is not None and fast.next is not None:
+              slow=slow.next
+              fast=fast.next.next
+         return slow
+
+#Time Complexity=O(N/2)
+#Space Complexity=O(1)
